@@ -1,4 +1,4 @@
 Deep-Purple
 ===========
 
-SoftUni teamwork projects for the group Deep Fuschia
+Task #1: Make a game in java
