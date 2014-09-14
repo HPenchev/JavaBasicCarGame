@@ -14,10 +14,10 @@ public class Car extends Entity {
 	public void update() {
 		x += velX;
 		if (x > 770) {
-			x = 770;
+			x = 0;
 		}
 		else if (x < 0) {
-			x = 0;
+			x = 770;
 		}
 	}
 
@@ -35,9 +35,9 @@ public class Car extends Entity {
 	public void keyPressed(KeyEvent keyPressed) {
 		int key = keyPressed.getKeyCode();
 
-		if (key == KeyEvent.VK_A) {
+		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
 			velX = -2;
-		} else if (key == KeyEvent.VK_RIGHT) {
+		} else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
 			velX = 2;
 		}
 	}
@@ -45,9 +45,9 @@ public class Car extends Entity {
 	public void keyReleased(KeyEvent keyPressed) {
 		int key = keyPressed.getKeyCode();
 
-		if (key == KeyEvent.VK_LEFT) {
+		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) {
 			velX = 0;
-		} else if (key == KeyEvent.VK_RIGHT) {
+		} else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
 			velX = 0;
 		}
 	}
