@@ -35,7 +35,7 @@ public class Car extends Entity {
 	public void keyPressed(KeyEvent keyPressed) {
 		int key = keyPressed.getKeyCode();
 
-		if (key == KeyEvent.VK_LEFT) {
+		if (key == KeyEvent.VK_A) {
 			velX = -2;
 		} else if (key == KeyEvent.VK_RIGHT) {
 			velX = 2;
