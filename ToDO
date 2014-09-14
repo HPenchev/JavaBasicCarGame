@@ -1,0 +1,40 @@
+  !1. Wake up.
+  !1.1 Get bucket and food
+  !1.2 Fill bucket with coffee
+  !1.3 Eat food whilst trying to empty said bucked into system.
+  !1.4 Get serious.
+  
+  
+2. Get Car icon size for collision detection.
+2.5 Make Collision actually work.
+3. Combine repeating methods and classes, rename variables for clarity.
+4. Add comments in the process for MORE clarity.
+
+
+  !5. Make Lunch.
+  !5.5 Eat lunch.
+
+
+6. Add Scoring system.
+7. Make cars move in fixed path Ex: if ze car has a width ot 20 make field 20*X where X is number of lanes the car can move in.
+Do the same for incoming traffic.
+7.1 Resize canvas to fit lanes.
+8. Get some space on top or on the side of canvas to show score (Top is better)
+9. Add Random Image selection.
+10. Pray to god 1-9 are finished by noon and implement bonuses/extras etc.
+
+
+if (10==true){
+  While (GotBeer){
+  drink+="One More";
+  beer--;
+  if (beer == 0 || drink=="Too Much"){
+      PassOut;
+    }
+  }
+}
+
+BONUS TASK OF THE DAY:
+11. Pirate Power Point.
+12. Make 3-4 slides about the whole project.
+  !13. Post Selfies on facebook
