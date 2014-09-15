@@ -13,17 +13,17 @@ public class Car extends Entity {
 
 	public void update() {
 		x += velX;
-		if (x > 770) {
-			x = 0;
+		if (x > 570) {
+			x = 570;
 		}
-		else if (x < 0) {
-			x = 770;
+		else if (x < 200) {
+			x = 200;
 		}
 	}
 
 	//this will draw our car
 	public void draw(Graphics2D g2d) { 
-		g2d.drawImage(getPlayerImg(), x, y, null);
+		g2d.drawImage(getPlayerImg(), x, y-30, null);
 	}
 
 	public Image getPlayerImg() {

@@ -11,7 +11,7 @@ public class Bonuses extends Entity{
 	
 	int velY = 5;
 	Random randomGenerator = new Random();
-	int chance = randomGenerator.nextInt(100);
+	int chance = randomGenerator.nextInt(300);
 	
 	
 	public Bonuses(int xX, int yY) {
@@ -24,15 +24,19 @@ public class Bonuses extends Entity{
 			ImageIcon icon = new ImageIcon("lives.png");
 			return icon.getImage();
 		}
-		else
+		else if(chance<50)
 		{
 			ImageIcon icon = new ImageIcon("Biodiesel.jpg");
 			return icon.getImage();
 		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public void update() {
-		y+=50;
+		y+=1;
 	}
 	
 	public void draw(Graphics2D g2d) { 
