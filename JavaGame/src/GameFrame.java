@@ -20,12 +20,12 @@ public class GameFrame extends JPanel implements ActionListener {
 	
 	ArrayList<Bonuses> bonusesList = new ArrayList<Bonuses>();//we manage our falling bonuses in the list
 	ArrayList<ComingCars> carsComing = new ArrayList<ComingCars>();//we manage our falling cars in the list
+
 	public GameFrame() {
 		setFocusable(true);
 		setBackground(Color.DARK_GRAY);
 		int boardWidth = 800;
 		int boardHeight = 600;
-		
 		car = new Car(boardWidth/2, boardHeight - 60);
 		addKeyListener(new PressedKeys(car));
 		mainTimer = new Timer(5 , this); // parameter for controlling the speed of moving
