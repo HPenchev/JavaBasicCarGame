@@ -1,7 +1,5 @@
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.Graphics2D;
 import java.util.Random;
 
 import javax.swing.ImageIcon;

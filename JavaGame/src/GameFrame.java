@@ -1,14 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
-import java.util.Vector;
-import java.util.Stack;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
