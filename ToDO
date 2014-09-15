@@ -5,7 +5,7 @@
   !1.4 Get serious.
   
   
-2. Get Car icon size for collision detection.
+2. Get Car icon size for collision detection. !Car width is 27. !Height is 54.
 2.5 Make Collision actually work.
 3. Combine repeating methods and classes, rename variables for clarity.
 4. Add comments in the process for MORE clarity.
