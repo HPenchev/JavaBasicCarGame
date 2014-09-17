@@ -44,7 +44,7 @@ public class ComingCars extends Entity{//coming cars is the class generating fal
 		y+=2;
 	}
 	
-	public void draw(Graphics2D g2d) { 
+	public void draw(Graphics2D g2d) {
 		g2d.drawImage(getPlayerImg(), x,  y, null);
 	}
 	

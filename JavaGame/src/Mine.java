@@ -16,7 +16,6 @@ public class Mine {
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setEnabled(true);
-
 	}
 
 }

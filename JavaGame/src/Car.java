@@ -1,11 +1,13 @@
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+
 import javax.swing.ImageIcon;
 
 public class Car extends Entity {
 
-	int velX = 0;
+	static int velX = 0;
 
 	public Car(int x, int y) {
 		super(x, y);
@@ -50,5 +52,9 @@ public class Car extends Entity {
 		} else if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) {
 			velX = 0;
 		}
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(x, y-30, getPlayerImg().getWidth(null), getPlayerImg().getHeight(null));
 	}
 }

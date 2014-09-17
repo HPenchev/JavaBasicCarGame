@@ -47,7 +47,6 @@ public class GameFrame extends JPanel implements ActionListener {
 
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		carsGenerator();
 		for (int i = 0; i< carsComing.size(); i++) {
@@ -59,6 +58,12 @@ public class GameFrame extends JPanel implements ActionListener {
 			bonusesList.get(i).update();//we update each falling bonus 
 		}
 		
+		if(checkCollision()){ 
+			// car crashes
+		}
+		if(checkBonusCollision()){
+			// receive bonus
+		}
 		car.update();
 		repaint(); //function from JPanel, repainting the window 
 		
@@ -99,15 +104,20 @@ public class GameFrame extends JPanel implements ActionListener {
 
 	}
 
-//	private boolean0 checkCollision(ComingCars comingCar2) {
-//		for (ComingCars currentCar : carsComing) {
-//			if (comingCar.getBounds().intersects(currentCar.getBounds())) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-	
-	
-	
+	private boolean checkCollision() {
+		for (ComingCars currentCar : carsComing) {
+			if (currentCar.getBounds().intersects(car.getBounds())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	private boolean checkBonusCollision() {
+		for (Bonuses bonus : bonusesList) {
+			if (bonus.getBounds().intersects(car.getBounds())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
