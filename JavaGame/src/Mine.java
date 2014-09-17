@@ -14,7 +14,6 @@ public class Mine {
 		// corner
 		int boardWidth = 800;
 		int boardHeight = 600;
-		frame.setBackground(Color.green);
 		frame.setSize(boardWidth, boardHeight);
 		frame.setTitle("Cars");
 		frame.setVisible(true);

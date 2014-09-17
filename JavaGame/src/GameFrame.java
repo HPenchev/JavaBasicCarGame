@@ -25,7 +25,7 @@ public class GameFrame extends JPanel implements ActionListener {
 		setBackground(Color.DARK_GRAY);
 		int boardWidth = 800;
 		int boardHeight = 600;
-		car = new Car(boardWidth / 2, boardHeight - 60);
+		car = new Car(boardWidth / 2, boardHeight - 60); // Centers car in middle of board
 		addKeyListener(new PressedKeys(car));
 		mainTimer = new Timer(5, this); // parameter for controlling the speed of moving
 		mainTimer.start();
