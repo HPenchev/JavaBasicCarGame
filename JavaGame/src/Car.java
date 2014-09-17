@@ -28,6 +28,22 @@ public class Car extends Entity {
 		g2d.drawImage(getPlayerImg(), x, y-30, null);
 	}
 	
+	public void moveLane(Graphics2D g2d, int y, int x) { //Remove if background is selected.
+		g2d.fillRect(x, y - 300, 5, 60);
+		g2d.fillRect(x, y - 150, 5, 60);
+		g2d.fillRect(x, y, 5, 60);
+		g2d.fillRect(x, y + 150, 5, 60);
+		g2d.fillRect(x, y + 300, 5, 60);
+		g2d.fillRect(x, y + 450, 5, 60);
+	}
+
+	public void moveStreet(Graphics2D g2d, int y) { //Remove if background is selected.
+		//moveLane(g2d, y, 200);;
+		moveLane(g2d, y, 300);
+		moveLane(g2d, y, 400);
+		moveLane(g2d, y, 500);
+	}
+	
 	public Image getPlayerImg() {
 
 		ImageIcon icon = new ImageIcon("images/red-car.png");

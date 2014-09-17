@@ -61,17 +61,18 @@ public class GameFrame extends JPanel implements ActionListener {
 		} else if (GameOver) {
 			g.drawImage(gameoverimg, 0, 0, null);
 		} else {
-			y += 3; // Speed of lane aka moving lines.
-			if (y > 300) {
-				y = 0;
-			}
 			g.drawImage(img, 0, 0, null);
 			// Progress text on top left
 			Font font = new Font("Verdana", Font.PLAIN, 18);
 			g.setFont(font);
 			g.setColor(Color.WHITE);
 			g.drawString("car integrity: " + carIntegrity / 2 + "%", 0, 20);
-			g.drawString("overcharge: " + wonned * 25 + "%", 0, 40);
+			g.drawString("overcharge: " + wonned + "%", 0, 40);
+			y += 2; // Speed of lane aka moving lines.
+			if (y > 300) {
+				y = 0;
+			}
+			car.moveStreet(g2d, y);
 			// g.drawString("HEALTH: " + Integer.toString(health), 0, 40);
 			car.draw(g2d);
 
@@ -93,16 +94,13 @@ public class GameFrame extends JPanel implements ActionListener {
 			}
 		}
 		if (checkBonusCollision()) {
-			bonusGet = true; // Bonus Control Wont spawn more than 1 on screen.
-								// Controls removal.
-			bonusSpawned = true; // Bonus Control Wont spawn more than 1 on
-									// screen. Controls spawning.
+			bonusGet = true; // Bonus Control Wont spawn more than 1 on screen. Controls removal.
+			bonusSpawned = true; // Bonus Control Won't spawn more than 1 on screen. Controls spawning.
 			carIntegrity += 20; // Bonus hp recieved per bonus gain.
-			if (carIntegrity >= 200) {// If hp is full and you gain a heart or
-				carIntegrity = 200; // a heart puts you over HP threshold you
-									// gain +1 towards victory
-				wonned += 1;
-				if (wonned == 4) { // If above happens N times you win.
+			if (carIntegrity >= 200) {// If hp is full and you gain a heart or a heart puts you over HP threshold you
+				wonned+=Math.abs(40-(carIntegrity-200)); //if wonned is double than life% you win. 20 means you need 5 tools
+				carIntegrity = 200;	// gain +1 towards victory
+				if (wonned >= 100) { // If above happens N times you win.
 					win = true; // go to good ending
 				}
 			}
