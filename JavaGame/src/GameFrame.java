@@ -137,7 +137,7 @@ public class GameFrame extends JPanel implements ActionListener {
 		Random rnd = new Random();
 		int chance = rnd.nextInt(100);
 		if (chance < 2) { // 2% chance to spawn a car
-			int startPosition = rnd.nextInt(370) + 200;
+			int startPosition = rnd.nextInt(370)*27/27 + 200; // preven car stacking on X
 			comingCar = new ComingCars(startPosition, 0);
 			carsComing.add(comingCar);
 		}
@@ -148,7 +148,7 @@ public class GameFrame extends JPanel implements ActionListener {
 		int chance = rnd.nextInt(1000); // Increase to prolong game time -.-
 		if (chance == 0 && bonusSpawned) { // Game isn't fps locked and spawns a
 											// bonus every N ticks.
-			int startPosition = rnd.nextInt(370)*27/27 + 200; // Push car onto road.
+			int startPosition = rnd.nextInt(370) + 200;
 			comingBonus = new Bonuses(startPosition, 0);
 			bonusesList.add(comingBonus);
 			bonusSpawned = false;
