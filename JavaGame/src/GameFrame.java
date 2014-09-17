@@ -65,14 +65,14 @@ public class GameFrame extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		if (checkCollision()) {
-			carIntegrity -= 1;
+		if (checkCollision()) { 
+			carIntegrity -= 1;/
 			if (carIntegrity <= 0) {
 				GameOver = true;
 			}
 		}
 		if (checkBonusCollision()) {
-			//bonusesList.remove(0); //Remove bonus maybe restrict spawn to only 1 for this to work.
+			//bonusesList.remove(0);  //Remove bonus maybe restrict spawn to only 1 for this to work.
 			carIntegrity += 5;
 			if (carIntegrity > 200) {
 				carIntegrity = 200;
