@@ -32,50 +32,62 @@ public class GameFrame extends JPanel implements ActionListener {
 	}
 
 	public int y = 600;
-	public int carIntegrity = 200;
-	public boolean GameOver = false;
+	public int carIntegrity = 200; //car health 
+	public int wonned = 0; //value for condition to make win = true;
+	public boolean GameOver = false, bonusGet = false,bonusSpawned = true, win = false;
 
 	public void paint(Graphics g) {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
-		if (GameOver) {
+		if (win) {
 			g2d.setColor(Color.black);
-			g2d.fillRect(0, 0, 800, 600); // Add Game Over Image Here
+			g2d.fillRect(0, 0, 800, 600); // Add Game Over Image Here and remove all else
+			g2d.setColor(Color.white);
+			g2d.drawString("GG EASY", 380, 300);
+		}else if (GameOver) {
+			g2d.setColor(Color.black);
+			g2d.fillRect(0, 0, 800, 600); // Add Game Over Image Here and remove all else
 			g2d.setColor(Color.white);
 			g2d.drawString("Game Over", 380, 300);
 		} else {
-			Car.drawStreet(g2d);
+			Car.drawStreet(g2d); //Black borders on the sides Remove if background selected.
 			g2d.setColor(Color.GRAY);
-			car.moveStreet(g2d, y);
+			car.moveStreet(g2d, y);//street lines moving Remove if background selected.
 			y += 3; // Speed of lane aka moving lines.
 			if (y > 300) {
 				y = 0;
 			}
 			car.draw(g2d);
-
 			for (ComingCars upcomingCar : carsComing) {
 				upcomingCar.draw(g2d);
 			}
 			for (Bonuses bonus : bonusesList) {
 				bonus.draw(g2d);
 			}
+			//Progress text on top left?
 			g.setColor(Color.white);
 			g.drawString("Car integrity: " + carIntegrity/2 +"%", 0, 10);
+			g.drawString("Overcharge: "+wonned*25+"%", 0, 30);
 		}
 	}
 
-	public void actionPerformed(ActionEvent arg0) {
-		if (checkCollision()) { 
+	public void actionPerformed(ActionEvent arg0) { //Main game loop where the magic happens.
+		if (checkCollision()) { //If our car is hit reduce health by 1 per tick.
 			carIntegrity -= 1;
-			if (carIntegrity <= 0) {
-				GameOver = true;
+			if (carIntegrity <= 0) { //If car health is 0 car goes boom boom.
+				GameOver = true; //Go to bad ending
 			}
 		}
 		if (checkBonusCollision()) {
-			//bonusesList.remove(0);  //Remove bonus maybe restrict spawn to only 1 for this to work.
-			carIntegrity += 5;
-			if (carIntegrity > 200) {
-				carIntegrity = 200;
+			bonusGet = true;		//Bonus Control Wont spawn more than 1 on screen. Controls removal.
+			bonusSpawned = true;	//Bonus Control Wont spawn more than 1 on screen. Controls spawning.
+			carIntegrity += 20;		// Bonus hp recieved per bonus gain.
+			if (carIntegrity >= 200) {//If hp is full and you gain a heart or 
+				carIntegrity=200;	  //a heart puts you over HP threshold you gain +1 towards victory
+				wonned+=1;
+				if (wonned==3) { //If above happens N times you win.
+					win=true; // go to good ending
+				}
 			}
 		}
 		carsGenerator();
@@ -96,17 +108,19 @@ public class GameFrame extends JPanel implements ActionListener {
 			}
 		}
 		for (int i = 0; i < bonusesList.size(); i++) {
-			if (bonusesList.get(i).y > 600) { //default 820
+			if (bonusesList.get(i).y > 600 || bonusGet) { //default 820
 				bonusesList.remove(i);// deleting bonuses
+				if (i>=bonusesList.size()-1) {
+					bonusGet=false;
+				}
 			}
 		}
-
 	}
 
 	private void carsGenerator() {// we generate new cars here
 		Random rnd = new Random();
 		int chance = rnd.nextInt(100);
-		if (chance < 2) {
+		if (chance < 2) { //2% chance to spawn a car
 			int startPosition = rnd.nextInt(370) + 200;
 			comingCar = new ComingCars(startPosition, 0);
 			carsComing.add(comingCar);
@@ -115,12 +129,13 @@ public class GameFrame extends JPanel implements ActionListener {
 	}
 
 	private void bonusGenerator() {// we generate new bonuses here
-		Random rnd = new Random();
-		int chance = rnd.nextInt(100);
-		if (chance < 1) {
-			int startPosition = rnd.nextInt(370) + 200;
+		Random rnd = new Random();		// Random my ass...
+		int chance = rnd.nextInt(1000); //Increase to prolong game time -.-
+		if (chance == 0 && bonusSpawned) { //Game isn't fps locked and spawns a bonus every N ticks.
+			int startPosition = rnd.nextInt(370) + 200; // Push car onto road.
 			comingBonus = new Bonuses(startPosition, 0);
 			bonusesList.add(comingBonus);
+			bonusSpawned=false;
 		}
 
 	}

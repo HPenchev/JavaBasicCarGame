@@ -29,7 +29,7 @@ public class Car extends Entity {
 
 	}
 
-	public static void drawStreet(Graphics2D g2d) {
+	public static void drawStreet(Graphics2D g2d) { //Remove if background is selected.
 		g2d.setColor(Color.white);
 		g2d.setColor(Color.black);
 		g2d.fillRect(0, 0, 200, 800);
@@ -37,7 +37,7 @@ public class Car extends Entity {
 		g2d.fillRect(605, 0, 200, 800);
 	}
 
-	public void moveLane(Graphics2D g2d, int y, int x) {
+	public void moveLane(Graphics2D g2d, int y, int x) { //Remove if background is selected.
 		g2d.fillRect(x, y - 300, 5, 60);
 		g2d.fillRect(x, y - 150, 5, 60);
 		g2d.fillRect(x, y, 5, 60);
@@ -46,7 +46,7 @@ public class Car extends Entity {
 		g2d.fillRect(x, y + 450, 5, 60);
 	}
 
-	public void moveStreet(Graphics2D g2d, int y) {
+	public void moveStreet(Graphics2D g2d, int y) { //Remove if background is selected.
 		moveLane(g2d, y, 200);;
 		moveLane(g2d, y, 332);
 		moveLane(g2d, y, 464);
@@ -55,7 +55,7 @@ public class Car extends Entity {
 
 	public Image getPlayerImg() {
 
-		ImageIcon icon = new ImageIcon("car.resized");
+		ImageIcon icon = new ImageIcon("images/car.resized");
 		return icon.getImage();
 	}
 

@@ -18,20 +18,8 @@ public class Bonuses extends Entity{
 	}
 
 	public Image getPlayerImg() {
-		if(chance<20)
-		{
-			ImageIcon icon = new ImageIcon("lives.png");
+			ImageIcon icon = new ImageIcon("images/lives.png");
 			return icon.getImage();
-		}
-		else if(chance<50)
-		{
-			ImageIcon icon = new ImageIcon("Biodiesel.jpg");
-			return icon.getImage();
-		}
-		else
-		{
-			return null;
-		}
 	}
 	
 	public void update() {
