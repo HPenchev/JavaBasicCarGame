@@ -66,7 +66,7 @@ public class GameFrame extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 		if (checkCollision()) { 
-			carIntegrity -= 1;/
+			carIntegrity -= 1;
 			if (carIntegrity <= 0) {
 				GameOver = true;
 			}
